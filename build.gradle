@@ -9,6 +9,7 @@ war {
     finalizedBy 'copyWarToTomcatWebapps'
 }
 
+
 group = 'com.dirijable.springstarter'
 version = '1.0-SNAPSHOT'
 
