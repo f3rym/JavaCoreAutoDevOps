@@ -6,7 +6,6 @@ plugins {
 war {
     archiveBaseName = 'ROOT'              // Имя файла без расширения
     destinationDirectory = file('./build/libs/') // Папка для сохранения
-    finalizedBy 'copyWarToTomcatWebapps'
 }
 
 
@@ -52,7 +51,7 @@ test {
 
 task copyWarToTomcatWebapps(type: Copy){
     from './build/libs/ROOT.war'
-    into '/usr/local/tomcat/webapps/'
+    into '/opt/tomcat/webapps/'
     dependsOn war
 }
 
