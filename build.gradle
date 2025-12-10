@@ -4,7 +4,7 @@ plugins {
 }
 
 war {
-    archiveBaseName = 'ROOT'              // Имя файла без расширения
+    archiveBaseName = 'ROOT.war'              // Имя файла без расширения
     destinationDirectory = file('./build/libs/') // Папка для сохранения
 }
 
