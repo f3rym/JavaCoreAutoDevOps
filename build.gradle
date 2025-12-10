@@ -5,7 +5,7 @@ plugins {
 
 war {
     baseName  = 'ROOT'              // Имя файла без расширения
-    destinationDirectory = file('./build/libs/') // Папка для сохранения
+    destinationDir = file('./build/libs/')
     finalizedBy 'copyWarToTomcatWebapps'
 }
 
