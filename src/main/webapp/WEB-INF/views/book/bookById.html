@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="${book.title + ', ' + book.author + ', ' + book.publishYear}"></h1>
+
+<!-- Если книга свободна -->
+<div th:if="${book.personId == null}">
+    <p>This book is free. Who will be their owner?</p>
+
+    <form th:action="@{/books/{id}/assign(id=${book.id})}" method="post">
+        <input type="hidden" name="_method" value="PATCH">
+        <select name="personId">
+            <option th:each="person : ${persons}"
+                    th:value="${person.id}"
+                    th:text="${person.name + ', ' + person.birthyear}">
+            </option>
+        </select>
+        <button type="submit" >Own book</button>
+    </form>
+</div>
+
+<!-- Если книга занята -->
+<div th:if="${book.personId != null}">
+    <p>Owner:
+        <span th:each="person : ${persons}"
+              th:if="${person.id == book.personId}"
+              th:text="${person.name}">
+    </span>
+    </p>
+    <form th:action="@{/books/{id}/release(id=${book.id})}" method="post">
+        <input type="hidden" name="_method" value="PATCH">
+
+        <button type="submit">Free book</button>
+    </form>
+</div>
+
+<hr>
+<a th:href="@{/books/{id}/edit(id=${book.id})}">Edit</a>
+<form th:action="@{/books/{id}(id=${book.id})}" method="post" style="display:inline;">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit">Delete</button>
+</form>
+
+</body>
+</html>

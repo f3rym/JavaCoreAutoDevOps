@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Person</title>
+</head>
+<body>
+<h1>Edit Person</h1>
+
+<form th:action="@{/people/{id}(id=${person.id})}" th:object="${person}" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+
+    <div>
+        <label>Enter Full Name:</label>
+        <input type="text" th:field="*{name}">
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    </div>
+
+    <div>
+        <label>Enter Birth Year:</label>
+        <input type="number" th:field="*{birthyear}">
+        <div th:if="${#fields.hasErrors('birthyear')}" th:errors="*{birthyear}"></div>
+    </div>
+
+    <button type="submit">Edit!</button>
+</form>
+</body>
+</html>
