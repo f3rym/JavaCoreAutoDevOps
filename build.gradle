@@ -4,8 +4,8 @@ plugins {
 }
 
 war {
-    baseName  = 'ROOT'              // Имя файла без расширения
-    destinationDir = file('./build/libs/')
+    archiveBaseName = 'ROOT'              // Имя файла без расширения
+    destinationDirectory = file('./build/libs/') // Папка для сохранения
     finalizedBy 'copyWarToTomcatWebapps'
 }
 
