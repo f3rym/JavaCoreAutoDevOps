@@ -1,16 +1,19 @@
+
 plugins {
     id 'java'
     id 'war'
 }
 
 war {
-    archiveBaseName = 'ROOT.war'              // Имя файла без расширения
-    destinationDirectory = file('./build/libs/') // Папка для сохранения
+    archiveFileName = 'ROOT.war'              // Имя файла без расширения
+
 }
 
+jar{
+    enabled = false;
+}
 
 group = 'com.dirijable.springstarter'
-version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -49,12 +52,14 @@ test {
 
 
 
-task copyWarToTomcatWebapps(type: Copy){
-    from './build/libs/ROOT.war'
-    into '/opt/tomcat/webapps/'
-    dependsOn war
-}
+// task copyWarToTomcatWebapps(type: Copy){
+//     from './build/libs/ROOT.war'
+//     into '/opt/tomcat/webapps/'
+//     dependsOn war
+// }
 
-tasks.named("war"){
-    finalizedBy "copyWarToTomcatWebapps"
-}
+// tasks.named("war"){
+//     finalizedBy "copyWarToTomcatWebapps"
+// }
+
+
