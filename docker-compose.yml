@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:8080
+    restart: always
+    networks:
+      - f3Net
+    depends_on:
+      - db
+  db:
+    build:
+      context: ./src/main/sql
+      dockerfile: Dockerfile
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: "pg_isready --username=${POSTGRES_USER} && psql --username=${POSTGRES_USER} --list"
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    volumes:
+      - postgres:/var/lib/postgresql/data
+networks:
+  f3Net:
