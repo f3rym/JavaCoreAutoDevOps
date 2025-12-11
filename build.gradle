@@ -52,14 +52,14 @@ test {
 
 
 
-// task copyWarToTomcatWebapps(type: Copy){
-//     from './build/libs/ROOT.war'
-//     into '/opt/tomcat/webapps/'
-//     dependsOn war
-// }
+task copyWarToTomcatWebapps(type: Copy){
+    from './build/libs/ROOT.war'
+    into '/opt/tomcat/webapps/'
+    dependsOn war
+}
 
-// tasks.named("war"){
-//     finalizedBy "copyWarToTomcatWebapps"
-// }
+tasks.named("war"){
+    finalizedBy "copyWarToTomcatWebapps"
+}
 
 
