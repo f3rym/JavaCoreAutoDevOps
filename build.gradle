@@ -58,8 +58,8 @@ test {
 //     dependsOn war
 // }
 
-tasks.named("war"){
-    finalizedBy "copyWarToTomcatWebapps"
-}
+// tasks.named("war"){
+//     finalizedBy "copyWarToTomcatWebapps"
+// }
 
 
