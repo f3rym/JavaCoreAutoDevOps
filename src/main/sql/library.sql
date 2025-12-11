@@ -1,4 +1,4 @@
-create database project1_db;
+-- create database project1_db;
 
 create table person
 (
