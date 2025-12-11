@@ -11,11 +11,6 @@ COPY --chown=worker:worker ./src ./src/
 COPY --chown=worker:worker settings.gradle ./
 COPY --chown=worker:worker gradlew ./
 COPY --chown=worker:worker build.gradle ./
-
-# COPY --chown=worker:worker ./src ./
-# COPY --chown=worker:worker settings.gradle ./
-# COPY --chown=worker:worker gradlew ./
-# COPY --chown=worker:worker build.gradle ./
 RUN gradle clean build
 
 FROM tomcat:11.0.15-jre25-temurin-jammy
