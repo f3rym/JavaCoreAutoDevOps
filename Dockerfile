@@ -1,6 +1,7 @@
 FROM gradle:8.7 as builder
 
-RUN useradd -D worker
+
+RUN adduser -D worker
 USER worker
 WORKDIR /app
 COPY --chown=worker:worker ./src ./
